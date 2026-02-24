@@ -1,0 +1,66 @@
+def is_leap(year):
+    """Check if a year is a leap year."""
+    # A year is a leap year if it is divisible by 4, 
+    # unless it is a century year that is not divisible by 400.
+    return (year % 4 == 0 and year % 100 != 0) or (year % 400 == 0)
+
+def get_days_in_month(month, year):
+    """Get the number of days in a specific month and year."""
+    if month in [1, 3, 5, 7, 8, 10, 12]:
+        return 31
+    elif month in [4, 6, 9, 11]:
+        return 30
+    elif month == 2:
+        return 29 if is_leap(year) else 28
+    else:
+        return 0 # Invalid month
+
+def solve():
+    """Read date input, validate it, and print the next day's date."""
+    try:
+        # Read input for day, month, and year
+        day = int(input())
+        month = int(input())
+        year = int(input())
+    except ValueError:
+        # Handle non-integer input gracefully
+        print("Invalid Date")
+        return
+
+    # 1. Validate Year
+    if year <= 0:
+        print("Invalid Date")
+        return
+
+    # 2. Validate Month
+    if not (1 <= month <= 12):
+        print("Invalid Date")
+        return
+
+    # 3. Validate Day
+    days_in_current_month = get_days_in_month(month, year)
+    if not (1 <= day <= days_in_current_month):
+        print("Invalid Date")
+        return
+
+    # If all validations pass, the date is valid. Now increment it.
+    
+    # Check if it is the last day of the month
+    if day == days_in_current_month:
+        day = 1
+        # Check if it is the last month of the year
+        if month == 12:
+            month = 1
+            year += 1
+        else:
+            month += 1
+    else:
+        day += 1
+
+    # Print the incremented date in DD-MM-YYYY format
+    # Use string formatting to ensure leading zeros for day and month
+    print(f"{day:02d}-{month:02d}-{year}")
+
+if __name__ == "__main__":
+    solve()
+
