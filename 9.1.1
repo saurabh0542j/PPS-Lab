@@ -1,0 +1,16 @@
+# Read input string
+text = input()
+
+# Define vowels
+vowels = "aeiouAEIOU"
+
+# Initialize count
+count = 0
+
+# Loop through each character in the string
+for char in text:
+    if char in vowels:
+        count += 1
+
+# Print the total count of vowels
+print(count)
