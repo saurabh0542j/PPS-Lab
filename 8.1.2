@@ -1,0 +1,30 @@
+# Function to check if a number is prime
+def is_prime(n):
+    if n <= 1:
+        return False
+    if n == 2:
+        return True
+    if n % 2 == 0:
+        return False
+    for i in range(3, int(n**0.5) + 1, 2):
+        if n % i == 0:
+            return False
+    return True
+
+# Read input range
+start = int(input())
+end = int(input())
+
+# Track if any prime numbers are found
+found_prime = False
+
+# Check each number in the range
+for num in range(start, end + 1):
+    if is_prime(num):
+        print(num)
+        found_prime = True
+
+# If no primes found, print "No primes"
+if not found_prime:
+    print("No primes")
+
