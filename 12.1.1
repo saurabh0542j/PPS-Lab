@@ -1,0 +1,24 @@
+n = int(input().strip())
+contacts = {}
+
+for _ in range(n):
+    parts = input().strip().split()
+    
+    if parts[0] == "ADD":
+        name = parts[1]
+        phone = parts[2]
+        # Add or update contact
+        contacts[name] = phone
+    
+    elif parts[0] == "REMOVE":
+        name = parts[1]
+        # Remove if exists
+        contacts.pop(name, None)
+    
+    elif parts[0] == "DISPLAY":
+        if not contacts:
+            print("No contacts")
+        else:
+            # Display sorted by name
+            for name in sorted(contacts.keys()):
+                print(f"{name}: {contacts[name]}")
