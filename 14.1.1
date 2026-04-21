@@ -1,0 +1,35 @@
+class Complex:
+
+    def initComplex(self):
+        # Read real and imaginary parts as a single line and split them
+        parts = input().split()
+        self.real = int(parts[0])
+        self.imag = int(parts[1])
+
+    def sum(self, c1, c2):
+        # Add real and imaginary parts of the two instances
+        self.real = c1.real + c2.real
+        self.imag = c1.imag + c2.imag
+
+    def display(self):
+        # Format the output as <a> + <b>i or <a> - <b>i
+        if self.imag >= 0:
+            print(f"{self.real} + {self.imag}i")
+        else:
+            # Using abs() ensures we don't get double minus signs
+            print(f"{self.real} - {abs(self.imag)}i")
+
+
+
+# Create three instances
+c1 = Complex()
+c2 = Complex()
+c3 = Complex()
+
+# Initialize two complex numbers
+c1.initComplex()
+c2.initComplex()
+
+# Compute and display sum
+c3.sum(c1, c2)
+c3.display()
